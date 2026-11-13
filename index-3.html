@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ta"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>மாநபியின் மகத்தான வரலாறு – தேர்வு முடிவுகள் 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--g:#075b3b;--gold:#d6b45b;--ink:#18352a}*{box-sizing:border-box}
+body{margin:0;background:#f1f6f2;color:var(--ink);font-family:"Noto Sans Tamil",sans-serif}
+.top{height:7px;background:linear-gradient(90deg,#06452f,#198754,#d6b45b)}
+.wrap{width:min(760px,calc(100% - 28px));margin:30px auto}.card{background:white;border:1px solid #e1eae4;border-radius:22px;box-shadow:0 16px 45px #06452f18;overflow:hidden}
+header{text-align:center;padding:28px 18px 22px;background:linear-gradient(#f5fbf6,#fff)}
+.bism{font-size:28px;color:var(--g);font-weight:700;margin:0 0 14px}.logo{width:108px;height:108px;object-fit:contain}
+.org{font-weight:800;font-size:20px;color:#06452f;margin:8px 0 2px}.district{margin:0;color:#53685d;font-weight:600}
+.rule{width:90px;height:3px;background:var(--gold);margin:17px auto;border-radius:4px}
+h1{font-size:25px;color:var(--g);margin:0;line-height:1.5}.sub{color:#66766e;font-size:14px;margin:5px 0}
+main{padding:25px clamp(16px,5vw,40px) 32px}label{display:block;font-weight:700;margin-bottom:9px}
+.row{display:flex;gap:10px}input{flex:1;min-width:0;padding:14px;border:1.5px solid #d5e2d9;border-radius:11px;font:16px "Noto Sans Tamil";outline:none}
+input:focus{border-color:#198754}button{background:var(--g);color:white;border:0;border-radius:11px;padding:0 22px;font:700 15px "Noto Sans Tamil";cursor:pointer;min-height:50px}
+.hint{font-size:12px;color:#78877f}.status{text-align:center;min-height:25px;margin-top:16px;color:#66766e;font-size:14px}
+.result{display:none;border:1px solid #dce9df;border-radius:14px;margin-top:18px;overflow:hidden}.rh{background:#eff7f1;color:var(--g);font-weight:800;padding:14px 17px}
+.details{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:17px}.item span{display:block;font-size:12px;color:#66766e}.item strong{font-size:15px}.mark{font-size:22px!important;color:var(--g)}
+.download{display:block;margin:0 17px 17px;padding:13px;text-align:center;text-decoration:none;background:var(--gold);color:#302714;border-radius:10px;font-weight:800}
+footer{text-align:center;color:#718078;font-size:12px;padding:17px}
+@media(max-width:520px){.row{flex-direction:column}button{width:100%}.wrap{margin:16px auto}}
+</style></head>
+<body><div class="top"></div><div class="wrap"><div class="card">
+<header>
+<p class="bism" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+<img class="logo" src="./district-logo.png" alt="District Logo" onerror="this.style.display='none'">
+<p class="org">தமிழ்நாடு தவ்ஹீத் ஜமாஅத்</p><p class="district">செங்கல்பட்டு மேற்கு மாவட்டம்</p>
+<div class="rule"></div><h1>மாநபியின் மகத்தான வரலாறு</h1>
+<p class="sub">பொதுமக்களுக்கான பிரத்யேக தேர்வு – 2026</p><p class="sub"><b>தேர்வு முடிவுகள்</b></p>
+</header><main>
+<form id="searchForm"><label for="registration">பதிவு எண் (Registration Number)</label>
+<div class="row"><input id="registration" placeholder="உங்கள் பதிவு எண்ணை உள்ளிடவும்" required>
+<button id="searchBtn">Search Result</button></div>
+<p class="hint">Hall Ticket-ல் உள்ள பதிவு எண்ணை உள்ளிடவும்.</p></form>
+<div id="status" class="status" role="status"></div>
+<section id="result" class="result"><div class="rh">தேர்வு முடிவு</div><div class="details">
+<div class="item"><span>மாணவர் பெயர்</span><strong id="studentName">—</strong></div>
+<div class="item"><span>பதிவு எண்</span><strong id="regNo">—</strong></div>
+<div class="item"><span>கிளை</span><strong id="branch">—</strong></div>
+<div class="item"><span>மதிப்பெண்கள்</span><strong class="mark" id="marks">—</strong></div>
+<div class="item"><span>முடிவு</span><strong id="outcome">—</strong></div>
+<div class="item"><span>மொத்த மதிப்பெண்</span><strong>100</strong></div></div>
+<a id="downloadBtn" class="download" href="#" target="_blank" rel="noopener">Mark Sheet PDF பதிவிறக்கம்</a></section>
+</main></div><footer>தமிழ்நாடு தவ்ஹீத் ஜமாஅத் · செங்கல்பட்டு மேற்கு மாவட்டம்</footer></div>
+<script>
+// Replace this with the secure backend API domain after backend setup.
+const API_BASE_URL = "https://YOUR-BACKEND-DOMAIN.example";
+document.getElementById("searchForm").addEventListener("submit",async e=>{
+e.preventDefault();const reg=document.getElementById("registration").value.trim();
+const status=document.getElementById("status"),box=document.getElementById("result"),btn=document.getElementById("searchBtn");
+box.style.display="none";btn.disabled=true;status.textContent="முடிவைத் தேடுகிறது...";
+try{
+if(API_BASE_URL.includes("YOUR-BACKEND-DOMAIN"))throw Error("SETUP");
+const r=await fetch(`${API_BASE_URL}/api/result?registration=${encodeURIComponent(reg)}`);
+if(r.status===404)throw Error("NOT_FOUND");if(!r.ok)throw Error("SERVER");
+const d=await r.json();
+document.getElementById("studentName").textContent=d.name||"—";
+document.getElementById("regNo").textContent=d.registration||reg;
+document.getElementById("branch").textContent=d.branch||"—";
+document.getElementById("marks").textContent=`${d.marks??"—"} / 100`;
+document.getElementById("outcome").textContent=d.status||"—";
+document.getElementById("downloadBtn").href=`${API_BASE_URL}/api/marksheet?registration=${encodeURIComponent(reg)}`;
+box.style.display="block";status.textContent="";
+}catch(err){status.textContent=err.message==="SETUP"?"Backend இன்னும் இணைக்கப்படவில்லை. Backend அமைத்த பிறகு Search செயல்படும்.":err.message==="NOT_FOUND"?"இந்த பதிவு எண்ணுக்கு முடிவு கிடைக்கவில்லை.":"முடிவைப் பெற முடியவில்லை. பின்னர் முயற்சிக்கவும்."}
+finally{btn.disabled=false}
+});
+</script></body></html>
